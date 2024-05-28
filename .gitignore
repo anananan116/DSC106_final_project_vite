@@ -23,3 +23,5 @@ coverage
 
 tmp
 .svelte-kit/
+
+.git copy/
