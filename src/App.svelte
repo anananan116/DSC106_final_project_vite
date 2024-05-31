@@ -85,14 +85,14 @@ The Effects of Climate Change:<br>
   }
 
   .foreground {
-    padding: 500px 0;
+    padding: 200px 0;
     margin-left: 0;
     margin-right: auto;
     height: auto;
     position: relative;
     font-family: 'Verdana';
     line-height: 1.8;
-    font-size: 20px;
+    font-size: 16x;
     pointer-events: none; /* Foreground does not block mouse events */
     z-index: 1; /* Lower z-index to ensure it is below the background */
   }
