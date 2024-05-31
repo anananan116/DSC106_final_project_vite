@@ -1,7 +1,6 @@
 <script>
-  import Scroller from "./Scroller.svelte";
-  import Map from "./Map.svelte";
-  import { geoMercator } from "d3-geo";
+  import Scroller from "./Components/Scroller.svelte";
+  import Map from "./Components/Map.svelte";
 
   let count, index, offset, progress;
   let width, height;
