@@ -85,7 +85,7 @@ The Effects of Climate Change:<br>
   }
 
   .foreground {
-    padding: 200px 0;
+    padding: 150px 0;
     margin-left: 0;
     margin-right: auto;
     height: auto;
