@@ -4,8 +4,8 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the CSV data into a DataFrame
-df_summer = pd.read_csv('temperature_data.csv')
-df_winter = pd.read_csv('temperature_data.csv')
+df_summer = pd.read_csv('city_temp_summer.csv')
+df_winter = pd.read_csv('city_temp_winter.csv')
 @app.route('/temperature/summer', methods=['GET'])
 def get_temperature():
     country = request.args.get('country').lower()
