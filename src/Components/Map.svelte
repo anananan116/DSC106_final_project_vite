@@ -38,7 +38,8 @@
     dataTime = dataTime_winter;
   }
   function resize() {
-    width = svg.node().getBoundingClientRect().width;
+    const parent = document.getElementById("map-container").parentElement;
+    width = (parent ? parent.clientWidth : window.innerWidth) || 600;
     height = width / 2; // Maintain the aspect ratio
 
     // Set the SVG viewbox
@@ -201,7 +202,7 @@ function stop_timer() {
   let isVisible = false;
 </script>
 
-<div style="width: 100%; display: {isVisible ? 'block' : 'none'};">
+<div id="map-container" style="width: 100%; display: {isVisible ? 'block' : 'none'};">
   <h2>Average Temperature Change Compared to the Year of 1910</h2>
   <svg id="my_dataviz"></svg>
 

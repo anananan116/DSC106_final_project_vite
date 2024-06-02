@@ -3,7 +3,7 @@
     import * as d3 from 'd3';
 
     export let country = "United States of America";
-    export let city = "San Diego";
+    export let city = "New York";
     export let index;
 
     let data = [];
@@ -11,12 +11,17 @@
     let containerWidth;
     let containerHeight;
 
+    let prevCountry;
+    let prevCity;
+
     async function fetchData() {
         try {
-            const response = await fetch(`https://dsc-climate-data.xyz/temperature/summer?country=${country}&city=${city}`);
+            console.log('Fetching data...');
+            const response = await fetch(`https://dsc-climate-data.xyz/temperature/winter?country=${country}&city=${city}`);
             if (!response.ok) throw new Error('Network response was not ok');
             const jsonData = await response.json();
             data = jsonData;
+            console.log('Data fetched:', data);
             renderClimateStripe();
         } catch (error) {
             console.error('Fetching data failed:', error);
@@ -31,13 +36,17 @@
     });
 
     function adjustDimensions() {
-        containerWidth = document.getElementById('climate-stripe').clientWidth;
-        containerHeight = window.innerHeight * 0.2;
-        renderClimateStripe();
+        requestAnimationFrame(() => {
+            const parent = document.getElementById('climate-stripe').parentElement;
+            containerWidth = (parent ? parent.clientWidth : window.innerWidth) || 600; // Provide a default width
+            containerHeight = window.innerHeight * 0.2 || 200; // Provide a default height
+            console.log('Adjusted dimensions:', containerWidth, containerHeight);
+            renderClimateStripe();
+        });
     }
 
     function renderClimateStripe() {
-        if (data.length === 0) return;
+        if (data.length === 0 || !containerWidth || !containerHeight) return;
 
         const margin = { top: 20, right: 20, bottom: 20, left: 20 };
         const width = containerWidth - margin.left - margin.right;
@@ -83,8 +92,18 @@
             .attr('fill', d => colorScale(d.temperature));
     }
 
+    $: {
+        if ((country !== prevCountry || city !== prevCity) && country && city) {
+            prevCountry = country;
+            prevCity = city;
+            fetchData();
+        }
+    }
+
     $: if (index === 2) {
+        console.log('ClimateStripe is visible');
         isVisible = true;
+        renderClimateStripe();
     } else {
         isVisible = false;
     }
@@ -101,4 +120,4 @@
     }
 </style>
 
-<div id="climate-stripe" style="width: 100%; display: {isVisible ? 'block' : 'none'};"></div>
+<div id="climate-stripe" style="width: 100%; height: 200px; display: {isVisible ? 'block' : 'none'};"></div>
