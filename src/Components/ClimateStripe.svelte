@@ -67,6 +67,7 @@
     function renderClimateStripes() {
         renderClimateStripe('summer-stripe', summerData, "Average Summer Temperature Change Compared to the Year of 1910");
         renderClimateStripe('winter-stripe', winterData, "Average Winter Temperature Change Compared to the Year of 1910");
+        renderLegend();
     }
 
     function renderClimateStripe(id, data, title) {
@@ -124,10 +125,57 @@
             .attr('fill', d => colorScale(d.temperature));
     }
 
+    function renderLegend() {
+        const margin = { top: 0, right: 20, bottom: 10, left: 20 };
+        const legendWidth = containerWidth - margin.left - margin.right;
+        const legendHeight = 50;
+
+        const svg = d3.select('#legend')
+            .html('') // Clear previous svg content
+            .append('svg')
+            .attr('width', legendWidth + margin.left + margin.right)
+            .attr('height', legendHeight + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+
+        const legendScale = d3.scaleLinear()
+            .domain([-0.5, 1.5])
+            .range([0, legendWidth]);
+
+        const colorScale = d3.scaleLinear()
+            .domain([-0.5, -0.25, 0, 0.5, 1, 1.5])
+            .range([
+                "rgb(51, 160, 255)",  // Corresponds to index 0
+                "rgb(153, 222, 255)", // Corresponds to index 0.32
+                "rgb(240, 240, 240)", // White transition at index 0.325
+                "rgb(255, 208, 51)",  // Yellow at index 0.33
+                "orange",             // Orange at index 0.66
+                "red"                 // Red at index 1
+            ])
+            .interpolate(d3.interpolateRgb); // Use RGB interpolation for smooth color transitions
+
+        const legendAxis = d3.axisBottom(legendScale)
+            .tickValues([-0.5, -0.25, 0, 0.5, 1, 1.5])
+            .tickFormat(d => d.toFixed(2) + "°C");
+
+        svg.selectAll("rect")
+            .data(d3.range(-0.5, 1.5, 0.01))
+            .enter().append("rect")
+            .attr("x", d => legendScale(d))
+            .attr("y", 0)
+            .attr("width", legendWidth / 200)
+            .attr("height", legendHeight - 20)
+            .attr("fill", d => colorScale(d));
+
+        svg.append("g")
+            .attr("transform", `translate(0, ${legendHeight - 20})`)
+            .call(legendAxis);
+    }
+
     function renderLinePlot() {
         if (summerData.length === 0 || winterData.length === 0 || !containerWidth || !containerHeight) return;
 
-        const margin = { top: 40, right: 20, bottom: 40, left: 40 };
+        const margin = { top: 40, right: 40, bottom: 40, left: 40 };
         const width = containerWidth - margin.left - margin.right;
         const height = 300 - margin.top - margin.bottom;
 
@@ -163,14 +211,22 @@
             .y(d => y(d.temperature))
             .curve(d3.curveMonotoneX);
 
+        // Filter the years to display only one label every 10 years
+        const filteredYears = years.filter(year => year % 10 === 0);
+
         // Add X axis
         svg.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x).tickValues(filteredYears));
 
-        // Add Y axis
+        // Add Y axis on the left
         svg.append('g')
             .call(d3.axisLeft(y));
+
+        // Add Y axis on the right
+        svg.append('g')
+            .attr('transform', `translate(${width}, 0)`)
+            .call(d3.axisRight(y));
 
         // Add the summer line
         svg.append('path')
@@ -209,7 +265,49 @@
             .attr('cy', d => y(d.temperature))
             .attr('r', 3)
             .attr('fill', 'blue');
+
+        // Add legend
+        const legend = svg.append('g')
+            .attr('class', 'legend')
+            .attr('transform', `translate(${width - 150}, ${height-80})`); // Adjust position as needed
+
+        legend.append('rect')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', 150)
+            .attr('height', 50)
+            .attr('fill', 'none')
+            .attr('stroke', 'black');
+
+        legend.append('circle')
+            .attr('cx', 15)
+            .attr('cy', 15)
+            .attr('r', 6)
+            .attr('fill', 'orange');
+
+        legend.append('text')
+            .attr('x', 30)
+            .attr('y', 15)
+            .attr('dy', '.35em')
+            .text('Summer Data')
+            .style('font-size', '12px')
+            .attr('alignment-baseline', 'middle');
+
+        legend.append('circle')
+            .attr('cx', 15)
+            .attr('cy', 35)
+            .attr('r', 6)
+            .attr('fill', 'blue');
+
+        legend.append('text')
+            .attr('x', 30)
+            .attr('y', 35)
+            .attr('dy', '.35em')
+            .text('Winter Data')
+            .style('font-size', '12px')
+            .attr('alignment-baseline', 'middle');
     }
+
 
     $: {
         if ((country !== prevCountry || city !== prevCity) && country && city) {
@@ -244,5 +342,6 @@
 <div id="climate-stripe-container" style="width: 100%; display: {isVisible ? 'block' : 'none'};">
     <div id="summer-stripe" style="height: 240px;"></div>
     <div id="winter-stripe" style="height: 240px;"></div>
+    <div id="legend" style="height: 60px; margin: 10px 0;"></div>
     <div id="line-plot" style="height: 340px;"></div>
 </div>

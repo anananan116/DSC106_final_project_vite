@@ -171,7 +171,7 @@
 
 <svelte-scroller-outer bind:this={outer}>
 	<svelte-scroller-background-container class='background-container' style="{style}{widthStyle}">
-		<svelte-scroller-background bind:this={background}>
+		<svelte-scroller-background bind:this={background} style="width: 70%; right: 0; position: absolute;">
 			<slot name="background"></slot>
 		</svelte-scroller-background>
 	</svelte-scroller-background-container>
@@ -185,7 +185,7 @@
 	svelte-scroller-outer {
 		display: block;
 		position: relative;
-		pointer-events: none; /* Added to allow clicking through */
+		pointer-events: none; /* Disable pointer events to allow scrolling */
 	}
 
 	svelte-scroller-background-container {
@@ -193,21 +193,20 @@
 		position: absolute;
 		width: 100%;
 		max-width: 100%;
-		pointer-events: none; /* Added to allow clicking through */
+		pointer-events: none; /* Disable pointer events to allow scrolling */
 	}
 
 	svelte-scroller-background {
 		display: block;
 		position: relative;
 		width: 100%;
-		pointer-events: auto; /* Ensure this element is still interactive */
+		pointer-events: auto; /* Enable pointer events for background */
 	}
 
 	svelte-scroller-foreground {
 		display: block;
 		position: relative;
-		z-index: 2;
-		pointer-events: auto; /* Ensure foreground elements are still interactive */
+		pointer-events: auto; /* Enable pointer events for foreground */
 	}
 
 	svelte-scroller-foreground::after {
@@ -216,4 +215,3 @@
 		clear: both;
 	}
 </style>
-

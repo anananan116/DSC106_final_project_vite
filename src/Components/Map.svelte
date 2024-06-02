@@ -222,6 +222,15 @@ function stop_timer() {
 
 
 <style>
+  #map-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust the height as needed */
+  }
+  
   .switch {
   position: relative;
   display: inline-block;
