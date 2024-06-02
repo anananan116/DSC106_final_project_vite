@@ -40,8 +40,7 @@
 >
 
 <div class="foreground" slot="foreground">
-  
-  <section><b>Pre-industrialization</b><br>Pre-industrialization, climate change was a natural phenomina, yet occured gradually. On the right is the data of climate change before large scale human interaction. </section>
+  <section><br><br><br><br><b>Pre-industrialization</b><br>Pre-industrialization, climate change was a natural phenomina, yet occured gradually. On the right is the data of climate change before large scale human interaction. </section>
   <section><b>Current Day</b><br>Vizualised here is how we have treated the planet over the past ~100 years. We have seen historic and irreversable increases globally.</section>
   <section><b>Local Data</b><br>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community.</section>
   
