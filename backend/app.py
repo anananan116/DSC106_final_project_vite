@@ -15,7 +15,7 @@ def get_temperature_summer():
     filtered_data = df_summer[(df_summer['Country'].str.lower() == country) & (df_summer['City'].str.lower() == city)]
     
     # Create the response in the desired format
-    response = filtered_data[['year', 'averageTemperature']].rename(columns={'averageTemperature': 'temperature'}).to_dict(orient='records')
+    response = filtered_data[['year', 'AverageTemperature']].rename(columns={'AverageTemperature': 'temperature'}).to_dict(orient='records')
 
     return jsonify(response)
 
@@ -28,7 +28,7 @@ def get_temperature_winter():
     filtered_data = df_winter[(df_winter['Country'].str.lower() == country) & (df_winter['City'].str.lower() == city)]
     
     # Create the response in the desired format
-    response = filtered_data[['year', 'averageTemperature']].rename(columns={'averageTemperature': 'temperature'}).to_dict(orient='records')
+    response = filtered_data[['year', 'AverageTemperature']].rename(columns={'AverageTemperature': 'temperature'}).to_dict(orient='records')
 
     return jsonify(response)
 
