@@ -1,6 +1,7 @@
 <script>
   import Scroller from "./Components/Scroller.svelte";
   import Map from "./Components/Map.svelte";
+  import ClimateStripe from "./Components/ClimateStripe.svelte";
 
   let count, index, offset, progress;
   let width, height;
@@ -53,6 +54,7 @@
     bind:clientHeight={height}
   >
     <Map {index} {currentYear} />
+    <ClimateStripe {index} />
 </div>
 </Scroller>
 
