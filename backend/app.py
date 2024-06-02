@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 import pandas as pd
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load the CSV data into a DataFrame
 df_summer = pd.read_csv('city_temp_summer.csv')
 df_winter = pd.read_csv('city_temp_winter.csv')
+
 @app.route('/temperature/summer', methods=['GET'])
 def get_temperature_summer():
     country = request.args.get('country').lower()
