@@ -7,7 +7,7 @@ app = Flask(__name__)
 df_summer = pd.read_csv('city_temp_summer.csv')
 df_winter = pd.read_csv('city_temp_winter.csv')
 @app.route('/temperature/summer', methods=['GET'])
-def get_temperature():
+def get_temperature_summer():
     country = request.args.get('country').lower()
     city = request.args.get('city').lower()
 
@@ -20,7 +20,7 @@ def get_temperature():
     return jsonify(response)
 
 @app.route('/temperature/winter', methods=['GET'])
-def get_temperature():
+def get_temperature_winter():
     country = request.args.get('country').lower()
     city = request.args.get('city').lower()
 
