@@ -77,6 +77,38 @@
     .interpolate(d3.interpolateRgb); // Use RGB interpolation for smooth color transitions
     await fetchData();
     update(currentYear);
+    // Add legend
+    var legend = svg.append("g")
+        .attr("class", "legend")
+        .attr("transform", "translate(20, 290)");
+
+    legend.append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("dy", ".35em")
+        .style("font-weight", "bold")
+        .text("Temperature Change");
+
+    var legendData = [-0.5, -0.25, 0.0, 0.5, 1.0, 1.5];
+    var legendWidth = 20;
+    var legendHeight = 20;
+    legend.selectAll("rect")
+        .data(legendData)
+        .enter().append("rect")
+        .attr("x", 0)
+        .attr("y", function(d, i) { return i * legendHeight + 20; }) // Adjust y position for the title
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .style("fill", function(d) { return colorScale(d); });
+
+    legend.selectAll("text.label")
+        .data(legendData)
+        .enter().append("text")
+        .attr("class", "label")
+        .attr("x", legendWidth + 5)
+        .attr("y", function(d, i) { return i * legendHeight + legendHeight / 2 + 20; }) // Adjust y position for the title
+        .attr("dy", ".35em")
+        .text(function(d) { return d.toFixed(2) + "°C"; });
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', resize);
       resize();
@@ -140,19 +172,7 @@ function stop_timer() {
   } else if (index === 1) {
     isVisible = true;
     clearInterval(timer);
-    start_year = 1880;
-    end_year = 1960;
-    currentYear = start_year;
-  } else if (index === 2) {
-    isVisible = true;
-    clearInterval(timer);
-    start_year = 1960;
-    end_year = 2013;
-    currentYear = start_year;
-  } else if (index === 3) {
-    isVisible = true;
-    clearInterval(timer);
-    start_year = 1800;
+    start_year = 1920;
     end_year = 2013;
     currentYear = start_year;
   } else {
@@ -181,18 +201,21 @@ function stop_timer() {
   let isVisible = false;
 </script>
 
-<h2>Average Temperature Change Compared to the Year of 1910</h2>
-<svg id="my_dataviz" style="width: 100%; display: {isVisible ? 'block' : 'none'};"></svg>
+<div style="width: 100%; display: {isVisible ? 'block' : 'none'};">
+  <h2>Average Temperature Change Compared to the Year of 1910</h2>
+  <svg id="my_dataviz"></svg>
 
-<div id="slider-container">
-  <button on:click={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
-  <input type="range" id="year-slider" min="1800" max="2012" step="1" bind:value={currentYear} on:input={e => update(+e.target.value)} style="width: 600pt;">
-  <span>{currentYear}</span>
-  <label class="switch">
-    <input type="checkbox" bind:checked={season_bool} on:change={() => season = season === 'winter' ? 'summer' : 'winter'}>
-    <span class={season === 'winter' ? 'slider winter' : 'slider summer'}></span>
-  </label>
+  <div id="slider-container">
+    <button on:click={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+    <input type="range" id="year-slider" min="1800" max="2012" step="1" bind:value={currentYear} on:input={e => update(+e.target.value)} style="width: 600pt;">
+    <span>{currentYear}</span>
+    <label class="switch">
+      <input type="checkbox" bind:checked={season_bool} on:change={() => season = season === 'winter' ? 'summer' : 'winter'}>
+      <span class={season === 'winter' ? 'slider winter' : 'slider summer'}></span>
+    </label>
+  </div>
 </div>
+
 
 
 
