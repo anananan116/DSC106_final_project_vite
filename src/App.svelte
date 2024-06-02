@@ -27,6 +27,7 @@
   };
 </script>
 
+<section><b>Introduction<b><br>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</section>
 
 <Scroller
   top={0.0}
@@ -39,11 +40,10 @@
 >
 
 <div class="foreground" slot="foreground">
-  <section>The world was a very different place tens of thousands of years ago. Sabertooth tigers, woolly mammoths, all able to survive due to the harsh artic climate. Once the temperatures rose it led to an extinction event, wiping out nearly all the species that thrived in that ecosystem. We are now facing that same extinction threatening force, and it is accelerating towards us at unprecedented rates due to human influenced climate change. The graph on the right visualizes the temperature change between the ice age and now. Keep in mind the scale of time. While the change in temperature is dramatic, soon you will see a similar temperature increase in an incomparably shorter time.
-</section>
-  <section>And now we introduce human intervention. At the beginning climate change occurred slowly. Industrialization did not occur overnight, and it took years to get industrialization at the scale we have now. Even still, the jump in climate change is immediately apparent. Feel free to hover over your home country and see information on how your community has been affected.</section>
-  <section>Over just the past 65 years we have caused a degree increase in average global climate, with the bulk of that increase occurring over the most recent 30 years. Last year was not only the hottest year on record, but also the largest one year increase in global temperature. This is indicative of the larger trend of climate change occurring at an increasingly fast rate, leaving scientists worried we may never stop this snowball once it's rolling.</section>
-  <section>Present the map full screen</section>
+  
+  <section><b>Pre-industrialization<b><br>Pre-industrialization, climate change was a natural phenomina, yet occured gradually. On the right is the data of climate change before large scale human interaction. </section>
+  <section><b>Current Day<b><br>Vizualised here is how we have treated the planet over the past ~100 years. We have seen historic and irreversable increases globally.</section>
+  <section><b>Local Data<b><br>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community.</section>
   
 </div>
 
@@ -57,7 +57,7 @@
 </div>
 </Scroller>
 
-<section>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.<br>
+<section><b>Call to Action<b><br>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.<br>
 <br>
 Individual impact:<br>
 <a href="https://www.un.org/en/actnow/ten-actions">www.un.org/</a><br>
