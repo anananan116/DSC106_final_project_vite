@@ -13,7 +13,7 @@
 
     async function fetchData() {
         try {
-            const response = await fetch(`http://dsc-climate-data.xyz/temperature/summer?country=${country}&city=${city}`);
+            const response = await fetch(`https://dsc-climate-data.xyz/temperature/summer?country=${country}&city=${city}`);
             if (!response.ok) throw new Error('Network response was not ok');
             const jsonData = await response.json();
             data = jsonData;
