@@ -40,10 +40,10 @@
   let cityInput = city;
 </script>
 
-<section>
-  <b>Introduction</b><br>
-  Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.<br>
-  empty space left for videos and research
+<section class="intro">
+  <h1>Introduction</h1>
+  <p>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</p>
+  <p class="placeholder">[Empty space left for videos and research]</p>
 </section>
 
 <Scroller
@@ -57,22 +57,21 @@
 >
   <div class="foreground" slot="foreground" style="pointer-events: auto;">
     <section>
-      <b>Pre-industrialization</b><br>
-      Pre-industrialization, climate change was a natural phenomenon, yet occurred gradually. On the right is the data of climate change before large scale human interaction. Notice how while there was a trend towards higher temperatures, the change was much more moderate. Many of the changes occur through many "yellow" periods of small increases, instead of jumps of "red" periods.
+      <h2>Pre-industrialization</h2>
+      <p>Pre-industrialization, climate change was a natural phenomenon, yet occurred gradually. On the right is the data of climate change before large scale human interaction. Notice how while there was a trend towards higher temperatures, the change was much more moderate. Many of the changes occur through many "yellow" periods of small increases, instead of jumps of "red" periods.</p>
     </section>
     <section>
-      <b>Current Day</b><br>
-      Visualized here is how we have treated the planet over the past ~100 years. We have seen historic and irreversible increases globally. "Red" periods go from being the exception to the rule. Note how even within this section of data, climate change is occurring at an increasing rate, with many of the biggest jumps in climate occurring in the past twenty years.
+      <h2>Current Day</h2>
+      <p>Visualized here is how we have treated the planet over the past ~100 years. We have seen historic and irreversible increases globally. "Red" periods go from being the exception to the rule. Note how even within this section of data, climate change is occurring at an increasing rate, with many of the biggest jumps in climate occurring in the past twenty years.</p>
     </section>
     <section>
-      <b>Local Data</b><br>
-      Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community. Many times people see climate change as a global issue, which creates a layer of abstraction between their lives and the effects of climate change. However, climate change already has and will continue to detract from all of our quality of lives.
-      <div>
+      <h2>Local Data</h2>
+      <p>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community. Many times people see climate change as a global issue, which creates a layer of abstraction between their lives and the effects of climate change. However, climate change already has and will continue to detract from all of our quality of lives.</p>
+      <div class="form">
         <label>
           Country:
           <input type="text" bind:value={countryInput} />
         </label>
-        <br>
         <label>
           City:
           <input type="text" bind:value={cityInput} />
@@ -93,27 +92,128 @@
   </div>
 </Scroller>
 
-<section>
-  <b>Call to Action</b><br>
-  Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.<br><br>
-  Individual impact:<br>
-  <a href="https://www.un.org/en/actnow/ten-actions">www.un.org/</a><br>
-  <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change">www.epa.gov/</a><br><br>
-  Global Trends:<br>
-  <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov/</a><br>
-  <a href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121">climate.nasa.gov/</a><br><br>
-  The Effects of Climate Change:<br>
-  <a href="https://www.nrdc.org/stories/what-are-effects-climate-change">www.nrdc.org/</a><br>
-  <a href="https://www.worldwildlife.org/threats/effects-of-climate-change">www.worldwildlife.org/</a><br>
+<section class="cta">
+  <h1>Call to Action</h1>
+  <p>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</p>
+  <div class="links">
+    <h3>Individual impact:</h3>
+    <a href="https://www.un.org/en/actnow/ten-actions">www.un.org</a>
+    <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change">www.epa.gov</a>
+    
+    <h3>Global Trends:</h3>
+    <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov</a>
+    <a href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121">climate.nasa.gov</a>
+    
+    <h3>The Effects of Climate Change:</h3>
+    <a href="https://www.nrdc.org/stories/what-are-effects-climate-change">www.nrdc.org</a>
+    <a href="https://www.worldwildlife.org/threats/effects-of-climate-change">www.worldwildlife.org</a>
+  </div>
 </section>
 
 <style>
+  body {
+    font-family: 'Verdana', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .intro, .cta, section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2em;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #2c3e50;
+  }
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+    color: #2980b9;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: #27ae60;
+  }
+
+  p {
+    max-width: 800px;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    line-height: 1.8;
+  }
+
+  .placeholder {
+    font-style: italic;
+    color: #7f8c8d;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+  }
+
+  label {
+    margin-bottom: 0.5em;
+  }
+
+  input {
+    padding: 0.5em;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    color: white;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #c0392b;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a {
+    color: #2980b9;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   .background {
     margin-left: auto;
     margin-right: 0;
     height: 100vh;
     position: relative;
-    z-index: 2; /* Higher z-index to ensure it is above the foreground */
+    z-index: 2;
   }
 
   .foreground {
@@ -125,19 +225,19 @@
     font-family: 'Verdana';
     line-height: 1.8;
     font-size: 16px;
-    pointer-events: auto; /* Enable pointer events for foreground */
-    z-index: 1; /* Lower z-index to ensure it is below the background */
+    pointer-events: auto;
+    z-index: 1;
   }
 
   .progress-bars {
     position: absolute;
-    background: rgba(170, 51, 120, 0.2); /* 40% opaque */
+    background: rgba(170, 51, 120, 0.2);
     visibility: visible;
   }
 
   section {
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0); /* Transparent background */
+    background-color: rgba(0, 0, 0, 0);
     text-align: center;
     color: black;
     padding: 1em;
@@ -148,6 +248,7 @@
   div {
     margin: 1em 0;
   }
+
   label {
     margin-right: 1em;
   }
