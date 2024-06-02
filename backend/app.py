@@ -12,7 +12,7 @@ def get_temperature_summer():
     city = request.args.get('city').lower()
 
     # Filter the DataFrame based on the query parameters
-    filtered_data = df_summer[(df_summer['country'].str.lower() == country) & (df_summer['city'].str.lower() == city)]
+    filtered_data = df_summer[(df_summer['Country'].str.lower() == country) & (df_summer['City'].str.lower() == city)]
     
     # Create the response in the desired format
     response = filtered_data[['year', 'averageTemperature']].rename(columns={'averageTemperature': 'temperature'}).to_dict(orient='records')
@@ -25,7 +25,7 @@ def get_temperature_winter():
     city = request.args.get('city').lower()
 
     # Filter the DataFrame based on the query parameters
-    filtered_data = df_winter[(df_winter['country'].str.lower() == country) & (df_winter['city'].str.lower() == city)]
+    filtered_data = df_winter[(df_winter['Country'].str.lower() == country) & (df_winter['City'].str.lower() == city)]
     
     # Create the response in the desired format
     response = filtered_data[['year', 'averageTemperature']].rename(columns={'averageTemperature': 'temperature'}).to_dict(orient='records')
