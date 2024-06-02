@@ -27,7 +27,7 @@
   };
 </script>
 
-<section><br><br><br><br><br><br><b>Introduction</b><br>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</section>
+<section><b>Introduction</b><br>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.<br>empty space left for videos and research</section>
 
 <Scroller
   top={0.0}
@@ -40,9 +40,9 @@
 >
 
 <div class="foreground" slot="foreground">
-  <section><br><br><br><br><b>Pre-industrialization</b><br>Pre-industrialization, climate change was a natural phenomina, yet occured gradually. On the right is the data of climate change before large scale human interaction. </section>
-  <section><b>Current Day</b><br>Vizualised here is how we have treated the planet over the past ~100 years. We have seen historic and irreversable increases globally.</section>
-  <section><b>Local Data</b><br>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community.</section>
+  <section><b>Pre-industrialization</b><br>Pre-industrialization, climate change was a natural phenomina, yet occured gradually. On the right is the data of climate change before large scale human interaction. Notice how while there was a trend towards higher tempuratures, the change was much more moderate. Many of the changes occur through many "yellow" periods of small increases, instead of jumps of "red" periods.</section>
+  <section><b>Current Day</b><br>Vizualised here is how we have treated the planet over the past ~100 years. We have seen historic and irreversable increases globally. "Red" periods go from being the exception to the rule. Note how even within this section of data, climate change is occuring at an increasing rate, with many of the biggest jumps in climate occuring in the past twenty years.</section>
+  <section><b>Local Data</b><br>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community. Many times people see climate change as a global issue, which creates a layer of abstraction between their lives and the effects of climate change. However, climate change already has and will continue to detract from all of our quality of lives.</section>
   
 </div>
 
