@@ -3,10 +3,11 @@
     import * as d3 from 'd3';
 
     export let country = "United States of America";
-    export let city = "New York";
+    export let city = "Los Angeles";
     export let index;
 
-    let data = [];
+    let summerData = [];
+    let winterData = [];
     let isVisible = false;
     let containerWidth;
     let containerHeight;
@@ -14,22 +15,39 @@
     let prevCountry;
     let prevCity;
 
-    async function fetchData() {
+    async function fetchSummerData() {
         try {
-            console.log('Fetching data...');
+            console.log('Fetching summer data...');
+            const response = await fetch(`https://dsc-climate-data.xyz/temperature/summer?country=${country}&city=${city}`);
+            if (!response.ok) throw new Error('Network response was not ok');
+            const jsonData = await response.json();
+            summerData = jsonData;
+            console.log('Summer data fetched:', summerData);
+            renderClimateStripes();
+            renderLinePlot();
+        } catch (error) {
+            console.error('Fetching summer data failed:', error);
+        }
+    }
+
+    async function fetchWinterData() {
+        try {
+            console.log('Fetching winter data...');
             const response = await fetch(`https://dsc-climate-data.xyz/temperature/winter?country=${country}&city=${city}`);
             if (!response.ok) throw new Error('Network response was not ok');
             const jsonData = await response.json();
-            data = jsonData;
-            console.log('Data fetched:', data);
-            renderClimateStripe();
+            winterData = jsonData;
+            console.log('Winter data fetched:', winterData);
+            renderClimateStripes();
+            renderLinePlot();
         } catch (error) {
-            console.error('Fetching data failed:', error);
+            console.error('Fetching winter data failed:', error);
         }
     }
 
     onMount(() => {
-        fetchData();
+        fetchSummerData();
+        fetchWinterData();
         adjustDimensions();
         window.addEventListener('resize', adjustDimensions);
         return () => window.removeEventListener('resize', adjustDimensions);
@@ -37,28 +55,42 @@
 
     function adjustDimensions() {
         requestAnimationFrame(() => {
-            const parent = document.getElementById('climate-stripe').parentElement;
+            const parent = document.getElementById('climate-stripe-container').parentElement;
             containerWidth = (parent ? parent.clientWidth : window.innerWidth) || 600; // Provide a default width
             containerHeight = window.innerHeight * 0.2 || 200; // Provide a default height
             console.log('Adjusted dimensions:', containerWidth, containerHeight);
-            renderClimateStripe();
+            renderClimateStripes();
+            renderLinePlot();
         });
     }
 
-    function renderClimateStripe() {
+    function renderClimateStripes() {
+        renderClimateStripe('summer-stripe', summerData, "Average Summer Temperature Change Compared to the Year of 1910");
+        renderClimateStripe('winter-stripe', winterData, "Average Winter Temperature Change Compared to the Year of 1910");
+    }
+
+    function renderClimateStripe(id, data, title) {
         if (data.length === 0 || !containerWidth || !containerHeight) return;
 
-        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        const margin = { top: 40, right: 20, bottom: 20, left: 20 };
         const width = containerWidth - margin.left - margin.right;
         const height = containerHeight - margin.top - margin.bottom;
 
-        const svg = d3.select('#climate-stripe')
+        const svg = d3.select(`#${id}`)
             .html('') // Clear previous svg content
             .append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
+
+        // Add title
+        svg.append('text')
+            .attr('x', width / 2)
+            .attr('y', -10)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '16px')
+            .text(title);
 
         const years = data.map(d => d.year);
         const temperatures = data.map(d => d.temperature);
@@ -92,18 +124,107 @@
             .attr('fill', d => colorScale(d.temperature));
     }
 
+    function renderLinePlot() {
+        if (summerData.length === 0 || winterData.length === 0 || !containerWidth || !containerHeight) return;
+
+        const margin = { top: 40, right: 20, bottom: 40, left: 40 };
+        const width = containerWidth - margin.left - margin.right;
+        const height = 300 - margin.top - margin.bottom;
+
+        const svg = d3.select('#line-plot')
+            .html('') // Clear previous svg content
+            .append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+
+        // Add title
+        svg.append('text')
+            .attr('x', width / 2)
+            .attr('y', -20)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '16px')
+            .text('Temperature Change Over the Years');
+
+        const years = summerData.map(d => d.year);
+
+        const x = d3.scaleBand()
+            .domain(years)
+            .range([0, width])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([d3.min([...summerData, ...winterData], d => d.temperature), d3.max([...summerData, ...winterData], d => d.temperature)])
+            .range([height, 0]);
+
+        const line = d3.line()
+            .x(d => x(d.year) + x.bandwidth() / 2)
+            .y(d => y(d.temperature))
+            .curve(d3.curveMonotoneX);
+
+        // Add X axis
+        svg.append('g')
+            .attr('transform', `translate(0, ${height})`)
+            .call(d3.axisBottom(x));
+
+        // Add Y axis
+        svg.append('g')
+            .call(d3.axisLeft(y));
+
+        // Add the summer line
+        svg.append('path')
+            .datum(summerData)
+            .attr('fill', 'none')
+            .attr('stroke', 'orange')
+            .attr('stroke-width', 1.5)
+            .attr('d', line);
+
+        // Add the winter line
+        svg.append('path')
+            .datum(winterData)
+            .attr('fill', 'none')
+            .attr('stroke', 'blue')
+            .attr('stroke-width', 1.5)
+            .attr('d', line);
+
+        // Add points for summer data
+        svg.selectAll('.dot-summer')
+            .data(summerData)
+            .enter()
+            .append('circle')
+            .attr('class', 'dot-summer')
+            .attr('cx', d => x(d.year) + x.bandwidth() / 2)
+            .attr('cy', d => y(d.temperature))
+            .attr('r', 3)
+            .attr('fill', 'orange');
+
+        // Add points for winter data
+        svg.selectAll('.dot-winter')
+            .data(winterData)
+            .enter()
+            .append('circle')
+            .attr('class', 'dot-winter')
+            .attr('cx', d => x(d.year) + x.bandwidth() / 2)
+            .attr('cy', d => y(d.temperature))
+            .attr('r', 3)
+            .attr('fill', 'blue');
+    }
+
     $: {
         if ((country !== prevCountry || city !== prevCity) && country && city) {
             prevCountry = country;
             prevCity = city;
-            fetchData();
+            fetchSummerData();
+            fetchWinterData();
         }
     }
 
     $: if (index === 2) {
         console.log('ClimateStripe is visible');
         isVisible = true;
-        renderClimateStripe();
+        renderClimateStripes();
+        renderLinePlot();
     } else {
         isVisible = false;
     }
@@ -120,4 +241,8 @@
     }
 </style>
 
-<div id="climate-stripe" style="width: 100%; height: 200px; display: {isVisible ? 'block' : 'none'};"></div>
+<div id="climate-stripe-container" style="width: 100%; display: {isVisible ? 'block' : 'none'};">
+    <div id="summer-stripe" style="height: 240px;"></div>
+    <div id="winter-stripe" style="height: 240px;"></div>
+    <div id="line-plot" style="height: 340px;"></div>
+</div>
