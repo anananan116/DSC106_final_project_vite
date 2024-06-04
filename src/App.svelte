@@ -43,9 +43,12 @@
 <section class="intro">
   <h1>Introduction</h1>
   <p>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</p>
-  <iframe class="video" width="420" height="345" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
-  <iframe class="video" width="420" height="345" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
-  <iframe class="video" width="420" height="345" src="https://www.youtube.com/embed/42xHuSmwYa4"></iframe>
+</section>
+
+<section class="hook">  
+  <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
+  <iframe class="video" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
+  <iframe class="video" src="https://www.youtube.com/embed/42xHuSmwYa4"></iframe>
 </section>
 
 <Scroller
@@ -121,8 +124,16 @@
     padding: 0;
   }
 
+  .hook{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+
   .video {
   display: inline-block;
+  height: 30vh;
+  width: 30vh
   }
 
   .intro, .cta, section {
@@ -223,6 +234,7 @@
   }
 
   .foreground {
+    padding: -5em;
     margin-left: 0;
     margin-right: auto;
     height: auto;
