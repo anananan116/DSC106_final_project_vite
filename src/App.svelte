@@ -283,7 +283,7 @@
     padding: 2em;
   }
 
-  outro-research {
+  .outro-research {
     height: 50vh;
     display: flex;
     flex-direction: row;
