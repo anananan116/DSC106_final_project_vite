@@ -127,13 +127,13 @@
     height: 50vh;
     display: flex;
     flex-direction: row;
+    gap: 20px;
   }
 
   .video {
   display: inline-block;
   height: 28.12vh;
   width: 50vh;
-  gap: 10px;
   }
 
   .intro, .cta, section {
