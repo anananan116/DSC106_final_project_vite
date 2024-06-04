@@ -41,7 +41,7 @@
 </script>
 
 <section class="intro">
-  <h1>Introduction</h1>
+  <h1>Motivation</h1>
   <p>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</p>
   <section class="hook">  
     <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
@@ -131,8 +131,9 @@
 
   .video {
   display: inline-block;
-  height: 30vh;
-  width: 30vh
+  height: 28.12vh;
+  width: 50vh;
+  gap: 10px;
   }
 
   .intro, .cta, section {
