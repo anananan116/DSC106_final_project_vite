@@ -103,7 +103,7 @@
     <div class="links">
       <h3>Individual impact:</h3>
       <a href="https://www.un.org/en/actnow/ten-actions">www.un.org</a>
-      <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change>www.epa.gov</a>
+      <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change">www.epa.gov</a>
       
       <h3>Global Trends:</h3>
       <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov</a>
@@ -121,7 +121,6 @@
 </section>
 
 <style>
-
   body {
     font-family: 'Verdana', sans-serif;
     line-height: 1.6;
