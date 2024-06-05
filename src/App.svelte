@@ -102,19 +102,21 @@
   <section class="outro-research">  
     <div class="links">
       <h3>Individual impact:</h3>
-      <a href="https://www.un.org/en/actnow/ten-actions">www.un.org</a>
-      <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change">www.epa.gov</a>
+      <a style="font-size:em; " href="https://www.un.org/en/actnow/ten-actions">www.un.org</a>
+      <a style="font-size:em; "href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change">www.epa.gov</a>
       
       <h3>Global Trends:</h3>
-      <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov</a>
-      <a href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121">climate.nasa.gov</a>
+      <a style="font-size:em; "href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov</a>
+      <a style="font-size:em; "href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121">climate.nasa.gov</a>
       
       <h3>The Effects of Climate Change:</h3>
-      <a href="https://www.nrdc.org/stories/what-are-effects-climate-change">www.nrdc.org</a>
-      <a href="https://www.worldwildlife.org/threats/effects-of-climate-change">www.worldwildlife.org</a>
+      <a style="font-size:em; "href="https://www.nrdc.org/stories/what-are-effects-climate-change">www.nrdc.org</a>
+      <a style="font-size:em; "href="https://www.worldwildlife.org/threats/effects-of-climate-change">www.worldwildlife.org</a>
     </div>
-    <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
-    <iframe class="video" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
+    <div class="links">
+      <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
+      <iframe class="video" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
+    </div>
   </section>
 </section>
 
@@ -163,7 +165,7 @@
   }
 
   h3 {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-top: 1em;
     color: #27ae60;
   }
@@ -288,5 +290,11 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
+  }
+
+  .outro-embeds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>
