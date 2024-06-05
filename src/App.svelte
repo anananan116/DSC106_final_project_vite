@@ -98,7 +98,7 @@
 
 <section class="outro">
   <h1>Call to Action</h1>
-  <pgap>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</pgap>
+  <p>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</p>
   <section class="outro-research">  
     <div class="links">
       <h3>Individual impact:</h3>
@@ -121,10 +121,6 @@
 </section>
 
 <style>
-
-  .hyperlinks {
-    font-size: 2em;
-  }
 
   body {
     font-family: 'Verdana', sans-serif;
@@ -180,14 +176,6 @@
     font-size: 1.2em;
     margin-bottom: 1em;
     line-height: 1.8;
-  }
-
-  pgap {
-    max-width: 800px;
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    line-height: 1.8;
-    row-gap: 30px;
   }
 
   .placeholder {
