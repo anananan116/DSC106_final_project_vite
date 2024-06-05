@@ -98,20 +98,20 @@
 
 <section class="outro">
   <h1>Call to Action</h1>
-  <p-gap>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</p-gap>
+  <pgap>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</pgap>
   <section class="outro-research">  
     <div class="links">
       <h3>Individual impact:</h3>
-      <a href="https://www.un.org/en/actnow/ten-actions" class="hyperlinks">www.un.org</a>
-      <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change class="hyperlinks">www.epa.gov</a>
+      <a href="https://www.un.org/en/actnow/ten-actions">www.un.org</a>
+      <a href="https://www.epa.gov/climate-change/what-you-can-do-about-climate-change>www.epa.gov</a>
       
       <h3>Global Trends:</h3>
-      <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature" class="hyperlinks">www.climate.gov</a>
-      <a href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121" class="hyperlinks">climate.nasa.gov</a>
+      <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">www.climate.gov</a>
+      <a href="https://climate.nasa.gov/vital-signs/global-temperature/?intent=121">climate.nasa.gov</a>
       
       <h3>The Effects of Climate Change:</h3>
-      <a href="https://www.nrdc.org/stories/what-are-effects-climate-change" class="hyperlinks">www.nrdc.org</a>
-      <a href="https://www.worldwildlife.org/threats/effects-of-climate-change" class="hyperlinks">www.worldwildlife.org</a>
+      <a href="https://www.nrdc.org/stories/what-are-effects-climate-change">www.nrdc.org</a>
+      <a href="https://www.worldwildlife.org/threats/effects-of-climate-change">www.worldwildlife.org</a>
     </div>
     <div class="links">
       <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
@@ -182,7 +182,7 @@
     line-height: 1.8;
   }
 
-  p-gap {
+  pgap {
     max-width: 800px;
     font-size: 1.2em;
     margin-bottom: 1em;
