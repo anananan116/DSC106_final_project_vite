@@ -188,6 +188,7 @@
     margin-bottom: 1em;
     line-height: 1.8;
     row-gap: 30px;
+    padding-bottom: 30px;
   }
 
   .placeholder {
