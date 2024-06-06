@@ -114,8 +114,8 @@
       <a href="https://www.worldwildlife.org/threats/effects-of-climate-change" class="hyperlinks">www.worldwildlife.org</a>
     </div>
     <div class="links">
-      <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
-      <iframe class="video" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
+      <iframe class="video" src="https://www.youtube.com/embed/fw01_q0cxM8"></iframe>
+      <iframe class="video" src="https://www.youtube.com/embed/xZZNM3Dib0o"></iframe>
     </div>
   </section>
 </section>
@@ -123,7 +123,7 @@
 <style>
 
   .hyperlinks {
-    font-size: 2em;
+    font-size: 1.25em;
   }
 
   body {
@@ -170,7 +170,7 @@
   }
 
   h3 {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 1em;
     color: #27ae60;
   }
