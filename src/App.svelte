@@ -111,6 +111,9 @@
       <h3>The Effects of Climate Change:</h3>
       <a href="https://www.nrdc.org/stories/what-are-effects-climate-change" class="hyperlinks">www.nrdc.org</a>
       <a href="https://www.worldwildlife.org/threats/effects-of-climate-change" class="hyperlinks">www.worldwildlife.org</a>
+
+      <h3>An Introduction to This Project:</h3>
+      <a href="https://www.youtube.com/watch?v=kHZPBEsDK7o" class="hyperlinks">www.youtube.com</a>
     </div>
     <div class="links">
       <iframe class="video" src="https://www.youtube.com/embed/fw01_q0cxM8"></iframe>
