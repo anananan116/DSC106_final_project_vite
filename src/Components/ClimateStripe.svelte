@@ -15,6 +15,8 @@
     let prevCountry;
     let prevCity;
 
+    let tooltip;
+
     async function fetchSummerData() {
         try {
             console.log('Fetching summer data...');
@@ -122,7 +124,31 @@
             .attr('y', 0)
             .attr('width', x.bandwidth())
             .attr('height', height)
-            .attr('fill', d => colorScale(d.temperature));
+            .attr('fill', d => colorScale(d.temperature))
+            .on('mousemove', function (event, d) {
+                const [mouseX, mouseY] = d3.pointer(event);
+                const containerRect = document.getElementById(id).getBoundingClientRect();
+                const yOffset = containerRect.top;
+                const leftEdge = containerRect.left;
+                const tooltipWidth = 300;
+                console.log(window.innerWidth - 400);
+                console.log(mouseX + tooltipWidth + 30);
+                const xOffset = mouseX + tooltipWidth + 30 + leftEdge > window.innerWidth ? -tooltipWidth - 30 : 30;
+                
+                d3.select(tooltip)
+                    .style('left', `${mouseX + xOffset}px`)
+                    .style('top', `${mouseY + yOffset}px`)
+                    .style('display', 'block')
+                    .html(`
+                        <strong>Country:</strong> ${country}<br>
+                        <strong>City:</strong> ${city}<br>
+                        <strong>Year:</strong> ${d.year}<br>
+                        <strong>Temperature Change:</strong> ${d.temperature.toFixed(2)}°C
+                    `);
+            })
+            .on('mouseout', () => {
+                d3.select(tooltip).style('display', 'none');
+            });
     }
 
     function renderLegend() {
@@ -308,7 +334,6 @@
             .attr('alignment-baseline', 'middle');
     }
 
-
     $: {
         if ((country !== prevCountry || city !== prevCity) && country && city) {
             prevCountry = country;
@@ -337,6 +362,16 @@
     .stripe {
         shape-rendering: crispEdges;
     }
+
+    .tooltip {
+        position: absolute;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border-radius: 5px;
+        pointer-events: none;
+        display: none;
+    }
 </style>
 
 <div id="climate-stripe-container" style="width: 100%; display: {isVisible ? 'block' : 'none'};">
@@ -345,3 +380,5 @@
     <div id="legend" style="height: 60px; margin: 10px 0;"></div>
     <div id="line-plot" style="height: 340px;"></div>
 </div>
+
+<div class="tooltip" bind:this={tooltip}></div>

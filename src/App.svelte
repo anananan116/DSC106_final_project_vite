@@ -31,7 +31,6 @@
   let city = "San Diego";
 
   function updateClimateStripe() {
-    // Update the ClimateStripe component by re-binding the country and city variables
     country = countryInput;
     city = cityInput;
   }
@@ -42,7 +41,7 @@
 
 <section class="intro">
   <h1>Motivation</h1>
-  <p>Climate change denial is still a rampant issue. Climate change, while heavily displayed in media, never seems to have easily accessible scientific data. As the timescale is larger than humans were made for, climate change has a lot of plausible deniability. This project aims to reduce that issue.</p>
+  <p>Climate change denial remains a significant issue. Despite extensive media coverage, scientific data on climate change is often inaccessible and hard to understand. The long timescale of climate change creates a sense of plausible deniability. This project aims to bridge that gap by providing clear, accessible data to illustrate the reality of climate change.</p>
   <section class="hook">  
     <iframe class="video" src="https://www.youtube.com/embed/qXLqoFHGmv0"></iframe>
     <iframe class="video" src="https://www.youtube.com/embed/Uf7vYkX-WVs"></iframe>
@@ -62,15 +61,15 @@
   <div class="foreground" slot="foreground" style="pointer-events: auto;">
     <section>
       <h2>Pre-industrialization</h2>
-      <p>Pre-industrialization, climate change was a natural phenomenon, yet occurred gradually. On the right is the data of climate change before large scale human interaction. Notice how while there was a trend towards higher temperatures, the change was much more moderate. Many of the changes occur through many "yellow" periods of small increases, instead of jumps of "red" periods.</p>
+      <p>Before industrialization, climate change was a natural phenomenon that occurred gradually. The data on the right shows the climate trends before large-scale human activity. Notice how temperature changes were moderate, with many "yellow" periods of small increases rather than sharp "red" jumps.</p>
     </section>
     <section>
       <h2>Current Day</h2>
-      <p>Visualized here is how we have treated the planet over the past ~100 years. We have seen historic and irreversible increases globally. "Red" periods go from being the exception to the rule. Note how even within this section of data, climate change is occurring at an increasing rate, with many of the biggest jumps in climate occurring in the past twenty years.</p>
+      <p>Over the past century, human activities have led to unprecedented and irreversible global temperature increases. "Red" periods, once rare, have become common. The data on the right highlights how climate change has accelerated, especially in the past twenty years, with significant jumps in global temperatures.</p>
     </section>
     <section>
       <h2>Local Data</h2>
-      <p>Here is the data broken down locally. Feel free to find your city to learn more about how climate change affects your local community. Many times people see climate change as a global issue, which creates a layer of abstraction between their lives and the effects of climate change. However, climate change already has and will continue to detract from all of our quality of lives.</p>
+      <p>Climate change affects us all locally. Here, you can explore data specific to your city to understand its impact on your community. Many people perceive climate change as a distant global issue, creating a layer of abstraction between their lives and its effects. However, climate change directly impacts our daily lives, and understanding its local effects is crucial.</p>
       <div class="form">
         <label>
           Country:
@@ -97,8 +96,8 @@
 </Scroller>
 
 <section class="outro">
-  <h1>Call to Action</h1>
-  <p-gap>Action must be taken to prevent climate change before it is too late. Attached is a variety of sources from groups much more informed than we are, sorted into categories depending on what you are looking for.</p-gap>
+  <h1>What can I do?</h1>
+  <p-gap>Preventing climate change requires immediate action. Here are resources from authoritative groups, categorized to help you find the information you need to make a difference.</p-gap>
   <section class="outro-research">  
     <div class="links">
       <h3>Individual impact:</h3>
@@ -121,7 +120,6 @@
 </section>
 
 <style>
-
   .hyperlinks {
     font-size: 1.25em;
   }
@@ -134,7 +132,7 @@
     padding: 0;
   }
 
-  .hook{
+  .hook {
     height: 50vh;
     display: flex;
     flex-direction: row;
@@ -142,9 +140,9 @@
   }
 
   .video {
-  display: inline-block;
-  height: 28.12vh;
-  width: 50vh;
+    display: inline-block;
+    height: 28.12vh;
+    width: 50vh;
   }
 
   .intro, .cta, section {
@@ -280,7 +278,6 @@
     margin: 0;
   }
 
-  /* Style for the input form */
   div {
     margin: 1em 0;
   }
